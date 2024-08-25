@@ -5,17 +5,21 @@
 .base_bg {
   background-image: linear-gradient(#4a249d, #7d41ff);
 }
-
 body {
-  /* background-image: linear-gradient(#e3dbff, #FFFFFF); */
-  animation: 3s infinite alternate slidein ease;
+  background: linear-gradient(-45deg, #ffffff, #dfd5ff, #ffffff, #dfd5ff);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+  height: 100vh;
 }
 
-@keyframes slidein {
-  from {
-    background-image: linear-gradient(45deg, #e3dbff, #000000);
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
   }
-  to {
-    background-image: linear-gradient(-90deg, #e3dbff, #000000);
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
   }
 }
