@@ -1,14 +1,18 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 import Header from "../components/Header";
+import Aside from "../components/Aside";
 
 const MainLO = () => {
   return (
-    <div>
-      <Header />
-      <section>
-        <Outlet />
-      </section>
+    <div className="w-full flex">
+      <Aside />
+      <main>
+        <Header />
+        <section>
+          <Outlet />
+        </section>
+      </main>
     </div>
   );
 };
