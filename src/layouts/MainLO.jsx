@@ -7,7 +7,7 @@ const MainLO = () => {
   return (
     <div className="w-full flex">
       <Aside />
-      <main>
+      <main className="flex-1">
         <Header />
         <section>
           <Outlet />
