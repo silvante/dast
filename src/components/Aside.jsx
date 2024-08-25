@@ -10,7 +10,7 @@ const Aside = () => {
           <img src={logo_light} alt="logo" width={"80px"} />
         </Link>
         <button className="text-white text-xl">
-          <i class="bx bx-dots-vertical-rounded"></i>
+          <i className="bx bx-dots-vertical-rounded"></i>
         </button>
       </div>
     </aside>

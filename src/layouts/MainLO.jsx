@@ -1,14 +1,17 @@
 import React from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import Header from "../components/Header";
 import Aside from "../components/Aside";
 
 const MainLO = () => {
+  const location = useLocation();
+  const path = location.pathname;
+
   return (
     <div className="w-full flex">
-      <Aside />
+      {path !== "/login" && path !== "/register" && <Aside />}
       <main className="flex-1">
-        <Header />
+        {path !== "/login" && path !== "/register" && <Header />}
         <section>
           <Outlet />
         </section>
