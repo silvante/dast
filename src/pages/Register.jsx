@@ -12,8 +12,8 @@ const Register = () => {
           <img src={logo_dark} alt="logo" width={"100px"} />
         </Link>
         <div>
-          {/* <SingUp /> */}
-          <EmailSend/>
+          <SingUp />
+          {/* <EmailSend/> */}
         </div>
       </div>
     </div>
