@@ -9,9 +9,9 @@ const MainLO = () => {
 
   return (
     <div className="w-full flex">
-      {path !== "/login" && path !== "/register" && <Aside />}
+      {path !== "/login" && path !== "/register" && path !== "/otp" && <Aside />}
       <main className="flex-1">
-        {path !== "/login" && path !== "/register" && <Header />}
+        {path !== "/login" && path !== "/register" && path !== "/otp" && <Header />}
         <section>
           <Outlet />
         </section>

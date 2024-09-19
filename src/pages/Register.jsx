@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import RegisterSide from "../components/RegisterSide";
+import White from "../components/White";
 
 const Register = () => {
+  const [Loading, setLoading] = useState(true);
   return (
     <div className="w-full h-screen">
       <div className="flex">
@@ -15,19 +17,19 @@ const Register = () => {
               <input
                 type="text"
                 required
-                className="w-full bg-white border-2 border-slate-950 py-3 px-5 rounded-xl placeholder:text-slate-950"
+                className="w-full bg-white border-2 font-semibold border-slate-950 py-3 px-5 rounded-xl placeholder:font-normal placeholder:text-slate-950"
                 placeholder="username"
               />
               <input
                 type="email"
                 required
-                className="w-full bg-white border-2 border-slate-950 py-3 px-5 rounded-xl placeholder:text-slate-950"
+                className="w-full bg-white border-2 font-semibold border-slate-950 py-3 px-5 rounded-xl placeholder:font-normal placeholder:text-slate-950"
                 placeholder="gmail"
               />
               <input
                 type="password"
                 required
-                className="w-full bg-white border-2 border-slate-950 py-3 px-5 rounded-xl placeholder:text-slate-950"
+                className="w-full bg-white border-2 font-semibold border-slate-950 py-3 px-5 rounded-xl placeholder:font-normal placeholder:text-slate-950"
                 placeholder="password"
               />
               <p>_and_</p>
@@ -39,6 +41,7 @@ const Register = () => {
         </div>
         <RegisterSide />
       </div>
+      {Loading && <White />}
     </div>
   );
 };
