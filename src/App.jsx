@@ -11,6 +11,10 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Profile from "./pages/Profile";
 import Otp from "./pages/Otp";
+import axios from "axios";
+
+axios.defaults.baseURL = "http://localhost:3000/";
+axios.defaults.withCredentials = true;
 
 const App = () => {
   const router = createBrowserRouter(

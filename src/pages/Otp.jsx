@@ -1,7 +1,11 @@
 import React from "react";
 import RegisterSide from "../components/RegisterSide";
+import axios from "axios";
 
 const Otp = () => {
+  const [Loading, setLoading] = useState(false);
+
+  
   return (
     <div className="w-full h-screen">
       <div className="flex">
@@ -24,6 +28,7 @@ const Otp = () => {
         </div>
         <RegisterSide />
       </div>
+      {Loading && <White />}
     </div>
   );
 };

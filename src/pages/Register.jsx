@@ -3,7 +3,30 @@ import RegisterSide from "../components/RegisterSide";
 import White from "../components/White";
 
 const Register = () => {
-  const [Loading, setLoading] = useState(true);
+  const [Loading, setLoading] = useState(false);
+
+  const [name, setname] = useState("new user");
+  const [email, setemail] = useState(null);
+  const [password, setpassword] = useState(null);
+  const [username, setusername] = useState(null);
+
+  async function Register(e) {
+    e.preventDefault();
+
+    try {
+      setLoading(true);
+      const response = await axios.post("/api/users", {
+        name,
+        email,
+        password,
+        username,
+      });
+    } catch (error) {
+      console.log(error);
+      alert("something went wrong");
+    }
+  }
+
   return (
     <div className="w-full h-screen">
       <div className="flex">
@@ -19,18 +42,24 @@ const Register = () => {
                 required
                 className="w-full bg-white border-2 font-semibold border-slate-950 py-3 px-5 rounded-xl placeholder:font-normal placeholder:text-slate-950"
                 placeholder="username"
+                value={username}
+                onChange={(e) => setusername(e.target.value)}
               />
               <input
                 type="email"
                 required
                 className="w-full bg-white border-2 font-semibold border-slate-950 py-3 px-5 rounded-xl placeholder:font-normal placeholder:text-slate-950"
                 placeholder="gmail"
+                value={email}
+                onChange={(e) => setemail(e.target.value)}
               />
               <input
                 type="password"
                 required
                 className="w-full bg-white border-2 font-semibold border-slate-950 py-3 px-5 rounded-xl placeholder:font-normal placeholder:text-slate-950"
                 placeholder="password"
+                value={password}
+                onChange={(e) => setpassword(e.target.value)}
               />
               <p>_and_</p>
               <button className="w-full bg-slate-950 text-white py-3 px-5 rounded-xl">

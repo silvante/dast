@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import RegisterSide from "../components/RegisterSide";
 
 const Login = () => {
+  const [Loading, setLoading] = useState(false);
   return (
     <div className="w-full h-screen">
       <div className="flex">
@@ -33,6 +34,7 @@ const Login = () => {
         </div>
         <RegisterSide />
       </div>
+      {Loading && <White />}
     </div>
   );
 };
