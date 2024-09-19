@@ -8,11 +8,15 @@ const Otp = () => {
   const location = useLocation();
   const [Loading, setLoading] = useState(false);
   const userid = location.state?.userid;
+  const user_pass = location.state?.user_pass;
+  const user_email = location.state?.user_email;
 
   const [redirect, setRedirect] = useState(null);
   const [otp, setotp] = useState("");
 
-  console.log(userid);
+  if (!userid || !user_email || !user_pass) {
+    return <Navigate to={"/register"} />;
+  }
 
   async function Otp(e) {
     e.preventDefault();
@@ -23,8 +27,44 @@ const Otp = () => {
         otp,
       });
       setLoading(false);
-      setRedirect({ to: "/login" });
+      Login(user_email, user_pass);
       alert(data.message);
+    } catch (error) {
+      console.log(error);
+      alert("something went wrong");
+      setLoading(false);
+    }
+  }
+
+  async function Login(email, password) {
+    try {
+      setLoading(true);
+      const { data } = await axios.post("/login", {
+        email,
+        password,
+      });
+      setToken(data);
+      localStorage.setItem("authToken", data);
+      setLoading(false);
+      setRedirect({ to: "/" });
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+      alert("something went wrong");
+      setLoading(false);
+    }
+  }
+
+  async function resendOtp(e) {
+    e.preventDefault();
+    try {
+      setLoading(true);
+      await axios.post("/api/users/resendOTP", {
+        email: user_email,
+        userid: userid,
+      });
+      setLoading(false);
+      alert("code resend");
     } catch (error) {
       console.log(error);
       alert("something went wrong");
@@ -36,7 +76,7 @@ const Otp = () => {
     <div className="w-full h-screen">
       <div className="flex">
         <div className="w-[50%] flex items-center justify-center">
-          <div>
+          <div className="flex flex-col items-center">
             <form
               className="w-60 space-y-3 flex flex-col text-center"
               onSubmit={Otp}
@@ -55,6 +95,9 @@ const Otp = () => {
                 Submit
               </button>
             </form>
+            <button className="my-5" onClick={resendOtp}>
+              resend code
+            </button>
           </div>
         </div>
         <RegisterSide />

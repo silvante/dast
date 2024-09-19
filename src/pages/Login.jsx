@@ -2,12 +2,16 @@ import React, { useState } from "react";
 import RegisterSide from "../components/RegisterSide";
 import axios from "axios";
 import White from "../components/White";
+import { Navigate } from "react-router-dom";
 
 const Login = () => {
   const [Loading, setLoading] = useState(false);
 
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
+  const [token, setToken] = useState("");
+
+  const [redirect, setRedirect] = useState(null);
 
   async function Login(e) {
     e.preventDefault();
@@ -17,7 +21,10 @@ const Login = () => {
         email,
         password,
       });
+      setToken(data);
+      localStorage.setItem("authToken", data);
       setLoading(false);
+      setRedirect({ to: "/" });
       console.log(data);
     } catch (error) {
       console.log(error);
@@ -41,7 +48,7 @@ const Login = () => {
               <input
                 type="email"
                 required
-                className="w-full bg-white border-2 border-slate-950 py-3 px-5 rounded-xl placeholder:text-slate-950"
+                className="w-full bg-white border-2 border-slate-950 py-3 px-5 rounded-xl font-semibold placeholder:font-normal placeholder:text-slate-950"
                 placeholder="gmail"
                 value={email}
                 onChange={(e) => setemail(e.target.value.trim())}
@@ -49,10 +56,10 @@ const Login = () => {
               <input
                 type="password"
                 required
-                className="w-full bg-white border-2 border-slate-950 py-3 px-5 rounded-xl placeholder:text-slate-950"
+                className="w-full bg-white border-2 border-slate-950 py-3 px-5 rounded-xl font-semibold placeholder:font-normal placeholder:text-slate-950"
                 placeholder="password"
-                value={email}
-                onChange={(e) => setemail(e.target.value.trim())}
+                value={password}
+                onChange={(e) => setpassword(e.target.value.trim())}
               />
               <p>_and_</p>
               <button className="w-full bg-slate-950 text-white py-3 px-5 rounded-xl">
@@ -64,6 +71,7 @@ const Login = () => {
         <RegisterSide />
       </div>
       {Loading && <White />}
+      {redirect && <Navigate to={redirect.to} state={redirect.state} />}
     </div>
   );
 };

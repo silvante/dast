@@ -27,7 +27,14 @@ const Register = () => {
       });
       console.log(data);
       setLoading(false);
-      setRedirect({ to: "/otp", state: { userid: data.data.userid } });
+      setRedirect({
+        to: "/otp",
+        state: {
+          userid: data.data.userid,
+          user_email: email,
+          user_pass: password,
+        },
+      });
     } catch (error) {
       console.log(error);
       alert(error);
