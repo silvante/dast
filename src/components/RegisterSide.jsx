@@ -9,7 +9,7 @@ const RegisterSide = () => {
   const path = location.pathname;
 
   return (
-    <div className="w-[50%] bg-slate-950 h-screen text-white flex justify-center items-center">
+    <div className="w-[50%] bg-gray-950 h-screen text-white flex justify-center items-center">
       <div>
         {path === "/register" && (
           <div className="text-center flex flex-col">

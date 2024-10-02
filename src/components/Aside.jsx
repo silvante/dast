@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const Aside = () => {
   return (
     <aside className="w-64 border-based border-r h-screen bg-white">
-      <div className="base_bg w-full p-5 flex justify-between items-center">
+      <div className="bg-gray-950 w-full p-5 flex justify-between items-center">
         <Link to={"/"}>
           <img src={logo_light} alt="logo" width={"80px"} />
         </Link>

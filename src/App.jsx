@@ -21,10 +21,10 @@ const App = () => {
     createRoutesFromElements(
       <Route element={<MainLO />}>
         <Route path="/" index element={<Home />} />
+        <Route path="/profile" element={<Profile />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/otp" element={<Otp />} />
-        <Route path="/profile" element={<Profile />} />
       </Route>
     )
   );

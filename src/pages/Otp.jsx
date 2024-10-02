@@ -85,13 +85,13 @@ const Otp = () => {
               <input
                 type="text"
                 required
-                className="w-full bg-white border-2 font-semibold border-slate-950 py-3 px-5 rounded-xl placeholder:font-normal placeholder:text-slate-950"
+                className="w-full bg-white border-2 font-semibold border-gray-950 py-3 px-5 rounded-xl placeholder:font-normal placeholder:text-gray-950"
                 placeholder="****"
                 value={otp}
                 onChange={(e) => setotp(e.target.value.trim())}
               />
               <p>_and_</p>
-              <button className="w-full bg-slate-950 text-white py-3 px-5 rounded-xl">
+              <button className="w-full bg-gray-950 text-white py-3 px-5 rounded-xl">
                 Submit
               </button>
             </form>
