@@ -13,7 +13,7 @@ import Profile from "./pages/Profile";
 import Otp from "./pages/Otp";
 import axios from "axios";
 
-axios.defaults.baseURL = "http://localhost:3000/";
+axios.defaults.baseURL = "http://localhost:8000/";
 axios.defaults.withCredentials = true;
 
 const App = () => {
